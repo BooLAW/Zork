@@ -176,7 +176,7 @@ int main(){
 
 			//-----------------HELP-----------------(TODO)
 			else if (player_input.stringcomparison("help"))
-				printf(">> help lines\n");
+				printf(">>you can quit the game by typing(quit),you can look in your current room by typing (look), to move you can use (n/s/e/w/u/d) or go (north/south/west/east/up/down), you can see your stats typing (stats),you can pick/drop with (pick/drop item_name), you can use a more complex way by typing(pick/drop item_name from item_location, you can see your inventory with (inventory) or (i), to open or close doors you have to type (open/close door) and later you will be asked for the direction of the door,you can eat by typing(eat apples) just if you are in the correct room, and you can drink by typing(drink water)\n");
 
 			//------------------EAT-----------------
 			else if (player_input.stringcomparison("eat apples")){
