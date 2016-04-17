@@ -12,7 +12,8 @@ public:
 	//for making the inventory
 	int capacity;
 	int num_items;
-	
+	bool armor;
+	int bonus;
 	
 	void Look(){};
 	

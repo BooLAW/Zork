@@ -133,7 +133,6 @@ void Player::Pick2_Item(const String& something, const String& somewhere)const
 					world->item[i]->num_items--;
 					break;
 				}
-			
 			}
 			
 			break;
@@ -150,21 +149,19 @@ void Player::Drop_Item(const String& item_name)const
 	for (i = 0; i < MAX_ITEMS; i++)
 	{
 		if (world->item[i]->current_place.stringcomparison("inventory") && world->item[i]->name.stringcomparison(item_name.Cstr()))
-		{ 
+		{
 			world->item[i]->current_place = world->room[position_num]->name.Cstr();
 			printf("You dropped the %s.\n", world->item[i]->name.Cstr());
 			break;
-		}	
-		if (MAX_ITEMS == i) 
+		}
+		if (MAX_ITEMS == i)
 			printf("you don't have a %s in your inventory.\n", item_name.Cstr());
 	}
-
-	
 }
 
 void Player::User_Status()
 {	
 	printf(">>%s , you have %d health points left\n",name, health_points);
-	//printf(">> %s Attack: %d\n %s Armor:%d\n", name,player_damage,name, player_armor);
+	//printf(">> %s Attack: %d\n %s Armor:%d\n", name,player_damage,name, player_armor); // it crashes i don't know why
 	printf(">>You have %d / 100 food and %d / 100 water currently\n", food, water);
 }

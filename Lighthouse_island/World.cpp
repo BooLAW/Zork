@@ -33,11 +33,12 @@ void World::CreateWorld()
 	
 	//----------ITEMS--------------
 
-	item.PushBack(new Item("axe", "A big weapon that seems to be useful to deal with some problems.\n", "Sawmill", 1));
-	item.PushBack(new Item("gloves", "A pair of gloves that can avoid recoil.\n", "Forest", 1));
-	item.PushBack(new Item("key locked room", "Better keep it safe, keys use to be useful to.\n", "Appletrees", 1));
-	item.PushBack(new Item("Key lighthouse", "Better keep it safe, keys use to be useful to.\n", "Nest", 1));
-	item.PushBack(new Item("tools kit", "a set of tools that a good electrician man would have.\n", "Abandoned House", 2));
+	item.PushBack(new Item("axe", "A big weapon that seems to be useful to deal with some problems.\n", "Sawmill", 1,false,5));
+	item.PushBack(new Item("gloves", "A pair of gloves that can avoid recoil.\n", "Forest", 1,true,3));
+	item.PushBack(new Item("key locked room", "Better keep it safe, keys use to be useful to.\n", "Appletrees", 1,false,0));
+	item.PushBack(new Item("Key lighthouse", "Better keep it safe, keys use to be useful to.\n", "Nest", 1,false,0));
+	item.PushBack(new Item("tools kit", "a set of tools that a good electrician man would have.\n", "Abandoned House", 2,false,0));
+	item.PushBack(new Item("helmet", "this will protect your head.\n", "Beach", 2, true,5));
 
 	//------------ROOMS---------------
 	
