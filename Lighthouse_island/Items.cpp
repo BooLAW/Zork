@@ -14,7 +14,7 @@ void Item::Look()
 		for (int i = 0; i < MAX_ITEMS; i++)
 		{
 			if (world->item[i]->current_place.stringcomparison(name))
-				printf(">>There is a %s inside the inventory.\n", world->item[i]->name.Cstr());
+				printf(">>There is a / are %s inside the inventory.\n", world->item[i]->name.Cstr());
 		}
 	}
 }

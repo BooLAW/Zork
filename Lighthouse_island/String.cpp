@@ -180,13 +180,23 @@ char* String::GetWordFromString(const int word_position)const
 	int number=0;
 	int i;
 	int word_length;
+	//this for is to downcase every character
+	for (int i = 0; buffer[i] != '\0'; i++)
+	{
+		if ((buffer[i] > 'A') && (buffer[i] < 'Z')) buffer[i] = buffer[i] + 32;
+		if (buffer[i] == ' ') number++;
+	}
+	number = 0;
+
+
 	for ( i = 0, word_length = 0; i < length; i++)
 	{
 		if (buffer[i] == ' ')
 			number++;
 		if (number >= (word_position - 1))
 			word_length++;
-	}//now we are in the position of our word
+	}
+	//now we are in the position of our word
 
 	word = new char[word_length + 1];// +1 because /0
 
