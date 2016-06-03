@@ -58,8 +58,6 @@ int main(){
 					world->Look();
 					break;
 				}
-
-
 			}
 			else if (player_input.stringcomparison("go south") || player_input.stringcomparison("s"))
 			{
@@ -70,8 +68,6 @@ int main(){
 					world->Look();
 					break;
 				}
-
-
 			}
 			else if (player_input.stringcomparison("go east") || player_input.stringcomparison("e"))
 			{
@@ -110,8 +106,6 @@ int main(){
 					world->Look();
 					break;
 				}
-
-
 			}
 			//------------------LOOK(Rooms)------------------------
 			else if (player_input.stringcomparison("look")){
@@ -147,9 +141,7 @@ int main(){
 			//------------------TAKE FROM---------------------
 			else if ((action1.stringcomparison("pick")) && (action2.stringcomparison("from")))
 			{
-
 				world->player->Pick2_Item(item_name, item_location);
-
 			}
 			//---------------------------DROP-------------------
 
@@ -196,9 +188,6 @@ int main(){
 					world->player->water = 100;
 				else
 					printf("There is no drinking water around\n");
-
-
-
 			}
 
 			//INVALID COMMAND

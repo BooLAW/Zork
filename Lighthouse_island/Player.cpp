@@ -101,7 +101,7 @@ void Player::Pick1_Item(const String& item_name)const
 		{
 			
 			printf("You picked the %s.\n", world->item[i]->name.Cstr());
-			world->item[i]->current_place = "Inventory";
+			world->item[i]->current_place = "inventory";
 			break;
 		}
 	}
@@ -129,7 +129,7 @@ void Player::Pick2_Item(const String& something, const String& somewhere)const
 				if (world->item[j]->current_place.stringcomparison(something) && world->item[j]->name.stringcomparison(somewhere))
 				{
 					printf("You picked a %s.\n", world->item[j]->name.Cstr());
-					world->item[j]->current_place = "Inventory";
+					world->item[j]->current_place = "inventory";
 					world->item[i]->num_items--;
 					break;
 				}
