@@ -7,9 +7,12 @@ void Exits::Look()const
 {
 	printf(">>%s", description.Cstr());
 	if (openable)
+	{
 		if (open)
 			printf(">>Door already opened.\n");
-		else 
+		else
 			printf(">>Door already closed.\n");
+	}
+		
 }
 

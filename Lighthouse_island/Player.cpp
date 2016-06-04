@@ -67,7 +67,7 @@ void Player::Open_Exit(const String& direction)const
 
 		
 
-}
+}	
 
 void Player::Close_Exit(const String& direction)const
 {
@@ -101,7 +101,7 @@ void Player::Pick1_Item(const String& item_name)const
 		{
 			
 			printf("You picked the %s.\n", world->item[i]->name.Cstr());
-			world->item[i]->current_place = "inventory";
+			world->item[i]->current_place = "Inventory";
 			break;
 		}
 	}
@@ -129,7 +129,7 @@ void Player::Pick2_Item(const String& something, const String& somewhere)const
 				if (world->item[j]->current_place.stringcomparison(something) && world->item[j]->name.stringcomparison(somewhere))
 				{
 					printf("You picked a %s.\n", world->item[j]->name.Cstr());
-					world->item[j]->current_place = "inventory";
+					world->item[j]->current_place = "Inventory";
 					world->item[i]->num_items--;
 					break;
 				}
@@ -148,7 +148,7 @@ void Player::Drop_Item(const String& item_name)const
 	int i;
 	for (i = 0; i < MAX_ITEMS; i++)
 	{
-		if (world->item[i]->current_place.stringcomparison("inventory") && world->item[i]->name.stringcomparison(item_name.Cstr()))
+		if (world->item[i]->current_place.stringcomparison("Inventory") && world->item[i]->name.stringcomparison(item_name.Cstr()))
 		{
 			world->item[i]->current_place = world->room[position_num]->name.Cstr();
 			printf("You dropped the %s.\n", world->item[i]->name.Cstr());
@@ -161,7 +161,10 @@ void Player::Drop_Item(const String& item_name)const
 
 void Player::User_Status()
 {	
-	printf(">>%s , you have %d health points left\n",name, health_points);
-	//printf(">> %s Attack: %d\n %s Armor:%d\n", name,player_damage,name, player_armor); // it crashes i don't know why
-	printf(">>You have %d / 100 food and %d / 100 water currently\n", food, water);
+	printf(">> %s , you have %d health points left\n",name.buffer, health_points);
+	printf(">> %s Attack: %d\n>> %s Armor:%d\n", name.buffer,player_damage,name.buffer, player_armor); // it crashes i don't know why
+	printf(">> You have %d / 100 food and %d / 100 water currently\n", food, water);
+}
+void Player::Equip(const String& item){
+
 }

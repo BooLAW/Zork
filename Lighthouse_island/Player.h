@@ -22,6 +22,8 @@ public:
 	void Drop_Item(const String& item)const;
 	void User_Status();//shows current status(life food, water,...)
 	void UpdateStats();
+	void Equip(const String& item);
+	void UnEquip(const String& item);
 	
 
 

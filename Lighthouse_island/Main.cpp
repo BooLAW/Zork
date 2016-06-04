@@ -14,17 +14,17 @@ int main(){
 	String player_input;
 	char* direction;
 
-	String action1;
-	String item_name;
-	String action2;
-	String item_location;
+	String word1;
+	String word2;
+	String word3;
+	String word4;
 	
 	world->CreateWorld();
 	printf(">>Hi survivor, before the adventure can i know your name?\n");
 	scanf_s("%s", world->player->name);
 	printf(">>Okay %s have, fun :) .\n", world->player->name);
 	printf(">>Here i will give you some tips, and remember if you need to see it again just input <help> command ;)\n");
-	printf(">>you can quit the game by typing(quit),you can look in your current room by typing (look), to move you can use (n/s/e/w/u/d) or go (north/south/west/east/up/down), you can see your stats typing (stats),you can pick/drop with (pick/drop item_name), you can use a more complex way by typing(pick/drop item_name from item_location, you can see your inventory with (inventory) or (i), to open or close doors you have to type (open/close door) and later you will be asked for the direction of the door,you can eat by typing(eat apples) just if you are in the correct room, and you can drink by typing(drink water)\n");
+	printf("\n>> Quit the game: (quit)\n>> Look current room: (look)\n>> Move: (n/s/e/w/u/d) or (go) + (north/south/west/east/up/down)\n>> Stats:(stats)\n>> Pick/Drop: (pick/drop item_name)\n>> Long Pick/Drop: (pick/drop item_name from item_location)\n>> Inventory: (inventory) or (i)\n>> Open/Close: (open/close direction)\n>> Eat:(eat apples)\n>> Drink:(drink water)\n\n");
 
 	while (gameloop){
 		while (gameloop)
@@ -37,10 +37,11 @@ int main(){
 			player_input = input_command;
 
 			//break the string into key words
-			action1 = player_input.GetWordFromString(1);
-			item_name = player_input.GetWordFromString(2);
-			action2 = player_input.GetWordFromString(3);
-			item_location = player_input.GetWordFromString(4);
+			word1 = player_input.GetWordFromString(1);
+			word2 = player_input.GetWordFromString(2);
+			word3 = player_input.GetWordFromString(3);
+			word4 = player_input.GetWordFromString(4);
+			//... new strings for the attack commands
 
 
 			//-------------------QUIT---------------------
@@ -58,6 +59,8 @@ int main(){
 					world->Look();
 					break;
 				}
+
+
 			}
 			else if (player_input.stringcomparison("go south") || player_input.stringcomparison("s"))
 			{
@@ -68,6 +71,8 @@ int main(){
 					world->Look();
 					break;
 				}
+
+
 			}
 			else if (player_input.stringcomparison("go east") || player_input.stringcomparison("e"))
 			{
@@ -106,6 +111,8 @@ int main(){
 					world->Look();
 					break;
 				}
+
+
 			}
 			//------------------LOOK(Rooms)------------------------
 			else if (player_input.stringcomparison("look")){
@@ -113,90 +120,91 @@ int main(){
 				break;
 			}
 			//--------------------OPEN---------------------------
-			else if (player_input.stringcomparison("open door"))
+			else if (word1.stringcomparison("open"))
 			{
-				printf(">>Which is the direction of the door to open ? \n");
-
-				scanf_s("%s", &direction);
-				world->player->Open_Exit(direction);
+				world->player->Open_Exit(word2);
 				break;
 			}
 
 			//----------------CLOSE---------------------
-			else if (player_input.stringcomparison("close door"))
+			else if (word1.stringcomparison("close"))
 			{
-
-				printf(">>Which is the direction of the door to close?\n");
-				scanf_s("%s", &direction);
-				world->player->Close_Exit(direction);
+				
+				world->player->Close_Exit(word2);
 				break;
 			}
 
 			//-------------------TAKE & PICK--------------------
-			else if ((action1.stringcomparison("pick")))
+			else if ((word1.stringcomparison("pick")))
 			{
-				world->player->Pick1_Item(item_name);
+				world->player->Pick1_Item(word2);
 			}
 
 			//------------------TAKE FROM---------------------
-			else if ((action1.stringcomparison("pick")) && (action2.stringcomparison("from")))
+			else if ((word1.stringcomparison("pick")) && (word3.stringcomparison("from")))
 			{
-				world->player->Pick2_Item(item_name, item_location);
-			}
-			//---------------------------DROP-------------------
 
-			else if (action1.stringcomparison("drop"))
-			{
-				world->player->Drop_Item(item_name);
+				world->player->Pick2_Item(word2, word4);
+
 			}
+			//--------------------DROP-------------------
+
+			else if (word1.stringcomparison("drop"))
+			{
+				world->player->Drop_Item(word2);
+			}
+
+			//-------------PUT ITEM INSIDE BAG---------
 
 			//--------------------INVENTORY----------------------
-			else if ((player_input.stringcomparison("inventory") || player_input.stringcomparison("i")))
+			else if ((word1.stringcomparison("inventory") || word1.stringcomparison("i")))
 			{
 				printf("\n>>Inventory:\n");
 				for (int i = 0; i < MAX_ITEMS; i++)
-				if (world->item[i]->current_place.stringcomparison("inventory"))
-					printf("%s\n", world->item[i]->name.Cstr());
+				{
+					if (world->item[i]->current_place.stringcomparison("Inventory"))
+						printf(">> %s\n", world->item[i]->name.Cstr());
+				}
+				
 			}
 
 			//-----------------STATS-----------------------
 
-			else if (player_input.stringcomparison("stats"))
+			else if (word1.stringcomparison("stats"))
 			{
 				world->player->User_Status();
 			}
 
 			//-----------------HELP-----------------(TODO)
-			else if (player_input.stringcomparison("help"))
-				printf(">>you can quit the game by typing(quit),you can look in your current room by typing (look), to move you can use (n/s/e/w/u/d) or go (north/south/west/east/up/down), you can see your stats typing (stats),you can pick/drop with (pick/drop item_name), you can use a more complex way by typing(pick/drop item_name from item_location, you can see your inventory with (inventory) or (i), to open or close doors you have to type (open/close door) and later you will be asked for the direction of the door,you can eat by typing(eat apples) just if you are in the correct room, and you can drink by typing(drink water)\n");
+			else if (word1.stringcomparison("help"))
+				printf("\n>> Quit the game: (quit)\n>> Look current room: (look)\n>> Move: (n/s/e/w/u/d) or (go) + (north/south/west/east/up/down)\n>> Stats:(stats)\n>> Pick/Drop: (pick/drop item_name)\n>> Long Pick/Drop: (pick/drop item_name from item_location)\n>> Inventory: (inventory) or (i)\n>> Open/Close: (open/close direction)\n>> Eat:(eat apples)\n>> Drink:(drink water)\n\n");
 
 			//------------------EAT-----------------
-			else if (player_input.stringcomparison("eat apples")){
+			else if (word1.stringcomparison("eat apples")){
 				if (*player_pos == 10)//appletree
 				{
 					world->player->food = 100;
-					printf("mmmm tasty\n");
+					printf(">>Mmmm tasty\n");
 				}
 				else
-					printf("There is nothing to eat here\n");
+					printf(">>There is nothing to eat here\n");
 			}
 
 
 			//------------DRINK-------------------
-			else if (player_input.stringcomparison("drink water")){
+			else if (word1.stringcomparison("drink water")){
 				if (*player_pos == 9)//waterfall
 					world->player->water = 100;
 				else
-					printf("There is no drinking water around\n");
+					printf(">>There is no drinking water around\n");
+
+
+
 			}
 
 			//INVALID COMMAND
-			else if (aux)
-				printf(">>>Incorrect Input\n");
-
-
-
-			aux++;
+			else if (aux++)
+				printf(">>Incorrect Input\n");
 		}
 	}
 	return 0;

@@ -28,22 +28,25 @@ void World::CreateWorld()
 {
 	
 	//----------ITEMS--------------
-
+	//name-description-location-number-armor-bonus
 	item.PushBack(new Item("axe", "A big weapon that seems to be useful to deal with some problems.\n", "Sawmill", 1,false,5));
 	item.PushBack(new Item("gloves", "A pair of gloves that can avoid recoil.\n", "Forest", 1,true,3));
-	item.PushBack(new Item("key locked room", "Better keep it safe, keys use to be useful to.\n", "Appletrees", 1,false,0));
-	item.PushBack(new Item("Key lighthouse", "Better keep it safe, keys use to be useful to.\n", "Nest", 1,false,0));
+	item.PushBack(new Item("key", "Better keep it safe, keys use to be useful to.\n", "Appletrees", 1,false,0));
 	item.PushBack(new Item("tools kit", "a set of tools that a good electrician man would have.\n", "Abandoned House", 2,false,0));
 	item.PushBack(new Item("helmet", "this will protect your head.\n", "Beach", 2, true,5));
+	item.PushBack(new Item("sword", "this will protect your head.\n", "Machine", 2, false, 5));
+	item.PushBack(new Item("life potion", "this will protect your head.\n", "Machine", 1, false, 5));
+	item.PushBack(new Item("energy potion", "this will protect your head.\n", "Machine", 1, false, 0));
+	item.PushBack(new Item("bazooka", "this will protect your head.\n", "Machine", 3, false, 20));
 
 	//------------ROOMS---------------
 	
 	room.PushBack(new Room("Solar Panels", " : There is a green energy power station that seems to be supplying the energy to the Lighthouse.\n"));
 	room.PushBack(new Room("Nest", " : Near the road there is a big plane full of bones of animals and some kind of human skulls.\n"));
-	room.PushBack(new Room("Sawmill", " : A few of trees are settled near the road.\n"));
+	room.PushBack(new Room("Sawmill", " : A few trees are settled near the road.\n"));
 	room.PushBack(new Room("LightHouse Entrance", ": The door is locked so you must find something to open it.\n"));
 	room.PushBack(new Room("LightHouse Top", " : There is a bulb that needs to be fixed but, wait, the wires have current and had been cut, so now someone has to fix that with some complex tools.\n"));
-	room.PushBack(new Room("Abandoned House", " : You are in a house full of scratches in the walls and a closed room in the west of it.\n "));
+	room.PushBack(new Room("Abandoned House", " : You are in a house full of scratches in the walls and a door in the east of it.\n "));
 	room.PushBack(new Room("Locked Room", " : You are inside the rocket room and a huge animal stands in front of you, the only escape is to go back or to jump behind the animal to what it seems to be a hole.\n"));
 	room.PushBack(new Room("Cliff", " : You are in front of a cliff with a very old wood bridge crossing it, the only way to cross it is through the bridge or by getting back and looking for any other route\n"));
 	room.PushBack(new Room("Foggy Valley", " : You are in the foggy valley, you hear some sounds, but the only way to cross it is by keep walking to the north or to the south\n"));
@@ -79,7 +82,12 @@ void World::CreateWorld()
 	exit.PushBack(new Exits("Forest", "Cliff", "west", "you see a cliff with a bridge that crosses it", true, false));
 	exit.PushBack(new Exits("Forest", "Appletrees", "north", "you see some different trees in the end of the path", true, false));
 	exit.PushBack(new Exits("Abandoned House", "Locked Room", "east", "at the end of the corridor there is a locked room", false, true));
-	exit.PushBack(new Exits("Locked Room", "Abandoned House", "west", "there is a door in front of you", false, true));
+	exit.PushBack(new Exits("Locked Room", "Abandoned House", "west", "there is a door in front of you", true, true));
 	
+	enemy.PushBack(new Enemy("Zombie", "A zombie that has a sailor jacket", "Foggy Valley"));
+	enemy.PushBack(new Enemy("Wolf", "A zombie that has a sailor jacket", "Nest"));
+	enemy.PushBack(new Enemy("Dog", "A zombie that has a sailor jacket", "Forest"));
+	enemy.PushBack(new Enemy("Mutant Shark", "A big shark with legs that can walk", "Beach"));
+
 }
 
