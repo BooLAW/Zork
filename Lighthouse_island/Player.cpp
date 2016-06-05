@@ -172,5 +172,5 @@ void Player::Equip(const String& item){
 
 void Player::Time()
 {
-	printf("%d\n", day > 48 ? day % 48 : day);
+	printf("%d\n", day % 48 );
 }

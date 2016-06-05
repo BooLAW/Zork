@@ -57,6 +57,7 @@ int main(){
 					world->player->food -= 5;
 					world->player->water -= 5;
 					world->Look();
+					world->player->day++;
 					break;
 				}
 
@@ -67,6 +68,7 @@ int main(){
 						world->enemy[i]->enemy_randmove();
 					}
 				}
+				
 			}
 			else if (player_input.stringcomparison("go south") || player_input.stringcomparison("s"))
 			{
@@ -75,6 +77,7 @@ int main(){
 					world->player->food -= 5;
 					world->player->water -= 5;
 					world->Look();
+					world->player->day++;
 					break;
 				}
 				if (world->player->day % 48 > 32)//night
@@ -84,6 +87,7 @@ int main(){
 						world->enemy[i]->enemy_randmove();
 					}
 				}
+				world->player->day++;
 
 			}
 			else if (player_input.stringcomparison("go east") || player_input.stringcomparison("e"))
@@ -93,6 +97,7 @@ int main(){
 					world->player->food -= 5;
 					world->player->water -= 5;
 					world->Look();
+					world->player->day++;
 					break;
 				}
 				if (world->player->day % 48 > 32)//night
@@ -102,6 +107,7 @@ int main(){
 						world->enemy[i]->enemy_randmove();
 					}
 				}
+				world->player->day++;
 			}
 			else if (player_input.stringcomparison("go west") || player_input.stringcomparison("w"))
 			{
@@ -110,6 +116,7 @@ int main(){
 					world->player->food -= 5;
 					world->player->water -= 5;
 					world->Look();
+					world->player->day++;
 					break;
 				}
 				if (world->player->day % 48 > 32)//night
@@ -119,6 +126,7 @@ int main(){
 						world->enemy[i]->enemy_randmove();
 					}
 				}
+				world->player->day++;
 			}
 			else if (player_input.stringcomparison("go up") || player_input.stringcomparison("u"))
 			{
@@ -127,6 +135,7 @@ int main(){
 					world->player->food -= 5;
 					world->player->water -= 5;
 					world->Look();
+					world->player->day++;
 					break;
 				}
 					
@@ -137,6 +146,7 @@ int main(){
 						world->enemy[i]->enemy_randmove();
 					}
 				}
+				world->player->day++;
 			}
 			else if (player_input.stringcomparison("go down") || player_input.stringcomparison("d"))
 			{
@@ -144,9 +154,10 @@ int main(){
 					world->player->food -= 5;
 					world->player->water -= 5;
 					world->Look();
+					world->player->day++;
 					break;
 				}
-
+				world->player->day++;
 
 			}
 			//------------------LOOK(Rooms)------------------------
@@ -233,6 +244,7 @@ int main(){
 				{
 					world->player->food = 100;
 					printf(">>Mmmm tasty\n");
+					world->player->day++;
 				}
 				else
 					printf(">>There is nothing to eat here\n");

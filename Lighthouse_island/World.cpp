@@ -20,7 +20,7 @@ void World::Look()const{
 	{
 		if (item[i]->current_place.stringcomparison(room[player->position_num]->name.Cstr()))
 			printf("Wow there is a / are %s in the floor.\n", item[i]->name.Cstr());
-		if (item[i]->current_place.stringcomparison(room[player->position_num]->name.Cstr()))
+		if (enemy[i]->current_place.stringcomparison(room[player->position_num]->name.Cstr()) && world->player->day % 48 > 32)
 			printf("there is a %s looking at you\n", enemy[i]->name.Cstr());
 	}
 }
