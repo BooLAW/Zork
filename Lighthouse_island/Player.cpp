@@ -9,6 +9,7 @@ Player::Player(){
 	player_armor = 2;
 	food = 100;
 	water = 100;
+	day = 48;
 }
 
 bool Player::Move_Player(const String& destination)
@@ -167,4 +168,9 @@ void Player::User_Status()
 }
 void Player::Equip(const String& item){
 
+}
+
+void Player::Time()
+{
+	printf("%d\n", day > 48 ? day % 48 : day);
 }

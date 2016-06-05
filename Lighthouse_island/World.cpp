@@ -20,7 +20,8 @@ void World::Look()const{
 	{
 		if (item[i]->current_place.stringcomparison(room[player->position_num]->name.Cstr()))
 			printf("Wow there is a / are %s in the floor.\n", item[i]->name.Cstr());
-	
+		if (item[i]->current_place.stringcomparison(room[player->position_num]->name.Cstr()))
+			printf("there is a %s looking at you\n", enemy[i]->name.Cstr());
 	}
 }
 
@@ -84,10 +85,10 @@ void World::CreateWorld()
 	exit.PushBack(new Exits("Abandoned House", "Locked Room", "east", "at the end of the corridor there is a locked room", false, true));
 	exit.PushBack(new Exits("Locked Room", "Abandoned House", "west", "there is a door in front of you", true, true));
 	
-	enemy.PushBack(new Enemy("Zombie", "A zombie that has a sailor jacket", "Foggy Valley"));
-	enemy.PushBack(new Enemy("Wolf", "A zombie that has a sailor jacket", "Nest"));
-	enemy.PushBack(new Enemy("Dog", "A zombie that has a sailor jacket", "Forest"));
-	enemy.PushBack(new Enemy("Mutant Shark", "A big shark with legs that can walk", "Beach"));
+	enemy.PushBack(new Enemy("Zombie", "A zombie that has a sailor jacket", "Foggy Valley",5,8));
+	enemy.PushBack(new Enemy("Wolf", "A zombie that has a sailor jacket", "Nest", 8, 4));
+	enemy.PushBack(new Enemy("Dog", "A zombie that has a sailor jacket", "Forest", 3, 6));
+	enemy.PushBack(new Enemy("Mutant Shark", "A big shark with legs that can walk", "Beach", 12, 50));
 
 }
 

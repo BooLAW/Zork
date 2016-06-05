@@ -12,6 +12,7 @@ public:
 	int player_armor;
 	int food;
 	int water;
+	int day;
 public:	
 	Player();
 	bool Move_Player(const String& destination);
@@ -24,7 +25,7 @@ public:
 	void UpdateStats();
 	void Equip(const String& item);
 	void UnEquip(const String& item);
-	
+	void Time();
 
 
 };
